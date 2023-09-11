@@ -1,9 +1,5 @@
 # _11209tvdi_python_
-## python 語言
-- 輸入和輸出
-- 資料型態
-- 教學計劃
-11209台北市職能發展學院
-
+# 上課網址
+https://meet.google.com/wvu-enjr-oor
 # 2023_09_07_作業
 [作業](./2023_09_07_HW/README.md)
