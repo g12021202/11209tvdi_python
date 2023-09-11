@@ -42,3 +42,4 @@
 
 ![unsplash 圖片](https://images.unsplash.com/photo-1573900941478-7cc800f708f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80)
 
+![book圖片](https://github.com/g12021202/_11209tvdi_python_/tree/main/2023_09_07_HW/book.jpg)
