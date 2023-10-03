@@ -3,7 +3,11 @@ import random
 class Player:
     def __init__(self,n:str,PlayerDices):
         self.__name = n
-        self.PlayerDices = PlayerDices
+    
+    def __play() -> int:
+        pass
+    
+
     
     
 
