@@ -1,5 +1,10 @@
 import random
 PlayerDices = [random.randint(1,6) for x in range(4)]
+firstTime = PlayerDices[0]
+secondTime = PlayerDices[1]
+thirdTime = PlayerDices[2]
+fourthTime = PlayerDices[3]
+print(f"第1次: {firstTime} , 第2次: {secondTime} , 第3次: {thirdTime} , 第4次: {fourthTime}")
 PlayerDices.sort()
 print(f"點數由小到大為: {PlayerDices[0]} ,  {PlayerDices[1]} ,  {PlayerDices[2]} ,  {PlayerDices[3]}")
 if PlayerDices[0] == PlayerDices[1] == PlayerDices[2] == PlayerDices[3]:
