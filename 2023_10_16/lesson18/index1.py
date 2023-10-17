@@ -7,30 +7,29 @@ from PIL import Image, ImageTk
 
 class Window(tk.Tk):
     def __init__(self,**kwargs):
-        super().__init__(**kwargs)        
-        self.title("Image")
+        super().__init__(**kwargs)
         self.geometry("300x250")
-        self.configure(background='#E79460')
+        self.title("Lines")
+        self.configure(background='#FA876E')
 
 class MyFrame(tk.Frame):
     def __init__(self,master,**kwargs):
-        super().__init__(master,**kwargs)
-        self.configure(background='#9E7A7A')
+        super().__init__(master=master,**kwargs)
+        self.configure(background='#FAE86E')
         self.img = Image.open("pets.png")
         self.pets = ImageTk.PhotoImage(self.img)
         canvas = tk.Canvas(self,
-                           width=48,
-                           height=48
-                           )
-        canvas.create_image(24,24,image=self.pets,anchor=tk.CENTER)
-        canvas.pack()
-        self.pack(expand=1, fill='both')
+                           width = 48,
+                           height = 48
+                          )
+        canvas.create_image(24, 24, image=self.pets, anchor=tk.CENTER)
+        canvas.pack(fill='both', expand=1)
+        self.pack(fill='both', expand=1)
 
-
-def main():    
+def main():
     window = Window()
     myFrame = MyFrame(window)
     window.mainloop()
 
-if __name__ == "__main__":
+if __name__ =="__main__":
     main()
