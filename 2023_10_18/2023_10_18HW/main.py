@@ -31,7 +31,6 @@ def insert_data(conn,values):
         '''
     # 傳回 Cursor 物件
     cursor.execute(sql, values)
-
     # 寫回資料庫
     conn.commit()
 # 連接資料庫檔案
