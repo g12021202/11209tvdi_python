@@ -24,7 +24,6 @@ def make_json(csvFilePath, jsonFilePath):
         csvReader = csv.DictReader(csvf)
         for rows in csvReader:
              
-            # Add this python dict to json array
             key = rows['Date']
             data_dict[key] = rows
     with open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
@@ -75,7 +74,5 @@ conn.commit()
 with open("tsmc.json",mode="r") as file:
     data = json.load(file)
     for item in data:
-        # print(type(item))
         insert_data(conn,(item[0], item[1], item[2], item[3], item[4], item[5], item[6]))
-        # insert_data(conn,(item['Date'], item['Open'], item['High'], item['Low'], item['Close'], item['Adj Close'], item['Volume']))
 ```
