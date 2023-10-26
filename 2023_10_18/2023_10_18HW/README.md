@@ -4,7 +4,7 @@
 把json格式的資料進入資料表
 
 [data.py](./data.py)
-'''
+```
 import yfinance as yf
 import csv
 import json
@@ -28,10 +28,10 @@ csvFilePath = r'tsmc.csv'
 jsonFilePath = r'tsmc.json'
  
 make_json(csvFilePath, jsonFilePath)
-'''
+```
 
 [main.py](./main.py)
-'''
+```
 import sqlite3
 import json
 
@@ -72,4 +72,4 @@ with open("tsmc.json",mode="r") as file:
         # print(type(item))
         insert_data(conn,(item[0], item[1], item[2], item[3], item[4], item[5], item[6]))
         # insert_data(conn,(item['Date'], item['Open'], item['High'], item['Low'], item['Close'], item['Adj Close'], item['Volume']))
-'''
+```
