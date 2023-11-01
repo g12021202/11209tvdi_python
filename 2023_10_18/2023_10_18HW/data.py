@@ -5,7 +5,7 @@
 import yfinance as yf
 import csv
 import json
-
+# 語法是 yf.download(股票代號, start=開始日期, end=完結日期)
 data = yf.download("2330.TW", start = '2023-01-01')
 data.to_csv('tsmc.csv')
 
@@ -29,6 +29,7 @@ def make_json(csvFilePath, jsonFilePath):
  
     # Open a json writer, and use the json.dumps() function to dump data
     with open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
+        # 寫入資料：json.dump(資料, 檔案物件)
         jsonf.write(json.dumps(data_dict, indent=4))
  
 # Decide the two file paths according to your 
