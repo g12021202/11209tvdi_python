@@ -16,4 +16,4 @@ https://meet.google.com/wvu-enjr-oor
 # 2023_10_18_作業
 [作業](./2023_10_18/2023_10_18HW/README.md)
 # 專案
-[專案](./FinalProject/)
+[專案](./FinalProject/README.md)
