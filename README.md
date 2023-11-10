@@ -18,6 +18,6 @@ https://meet.google.com/wvu-enjr-oor
 # 2023_11_02_作業
 [作業](./2023_11_02/README.md)
 # 2023_11_08_作業
-[作業](./2023_11_08/2023_11_08.png)
+[作業](./2023_11_08/README.md)
 # 專案
 [專案](./FinalProject/README.md)
