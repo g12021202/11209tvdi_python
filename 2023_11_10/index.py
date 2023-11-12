@@ -24,7 +24,7 @@ def main():
     window.geometry('600x300')
     window.resizable(width=False,height=False)
     # window.after(1000, update_data, window)
-    t = Timer(1, update_data, args=(window,))
+    t = Timer(60*60, update_data, args=(window,))
     t.start()
     window.mainloop()
     
