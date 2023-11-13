@@ -1,26 +1,43 @@
-將下載資料與建置資料庫放置在  datasource.py <br>
-執行介面與呼叫 datasource.py 放在 app.py <br>
-datasource.py
+建立 password.py
+```
+database=pw.DATABASE
+user=pw.USER
+password=pw.PASSWORD
+host=pw.HOST
+port="5432"
+apikey = {apiKey}
+```
+建立 .gitignore
+```
+password.py
+```
+建立 download.py
 ```
 import requests
 import psycopg2
 import password as pw
 import datetime
+from threading import Thread
+from time import sleep
 
-def __download_air_data()->list[dict]:
+def download_air_data()->list[dict]:
     '''
     下載 
     https://data.moenv.gov.tw/swagger/#/%E5%A4%A7%E6%B0%A3/get_aqx_p_07
     Curl 
     curl -X GET "https://data.moenv.gov.tw/api/v2/aqx_p_07?api_key=cbb6f9c0-9c3b-4086-b464-80594cd61f78" -H "accept: */*"
     '''
-    air_url = 'https://data.moenv.gov.tw/api/v2/aqx_p_07?api_key=cbb6f9c0-9c3b-4086-b464-80594cd61f78'
-    response = requests.get(air_url)
-    response.raise_for_status()
+    air_url = 'https://data.moenv.gov.tw/api/v2/aqx_p_07?api_key={pw.apiKey}'
+    res = requests.get(air_url)
+    data = res.json()['records']
+    return data
     print("下載成功")
-    return response.json()
 
-def __create_table(conn):    
+    # res.raise_for_status()
+    # return response.json()
+    # print("下載成功")
+
+def create_table(conn):    
     cursor = conn.cursor()
     cursor.execute(
         '''
@@ -41,12 +58,12 @@ def __create_table(conn):
             UNIQUE(測站名稱,更新時間)
         );
         '''
-    )
+        )
     conn.commit()
     cursor.close()
     print("create_table成功")
 
-def __insert_data(conn,VALUES:list[any])->None:
+def insert_data(conn,VALUES:list[any])->None:
     cursor = conn.cursor()
     cursor_time = datetime.datetime.utcnow()
     sql = '''
@@ -57,54 +74,24 @@ def __insert_data(conn,VALUES:list[any])->None:
     VALUES.append(cursor_time)
     cursor.execute(sql, VALUES) 
     conn.commit()
-    # cursor.close()
+     # cursor.close()
 
 def update_render_data()->None:
     # 下載並更新資料庫 
-    data = __download_air_data()
+    data = download_air_data()
     conn = psycopg2.connect(database=pw.DATABASE,
                             user=pw.USER, 
                             password=pw.PASSWORD,
                             host=pw.HOST, 
                             port="5432")
-    __create_table(conn)
-    for item in data["records"]:
-        __insert_data(conn,[item['sitename'],item['siteengname'],item['areaname'],item['county'],item['township'],item['siteaddress'],item['twd97lon'],item['twd97lat'],item['sitetype'],item['siteid']])
-    conn.close()
-```
-index.py
-```
-import datasource 
-import psycopg2
-import password as pw
-import tkinter as tk
-from tkinter import ttk
-from threading import Timer
+    create_table(conn)
+    for item in data:
+        insert_data(conn,[item['sitename'],item['siteengname'],item['areaname'],item['county'],item['township'],item['siteaddress'],item['twd97lon'],item['twd97lat'],item['sitetype'],item['siteid']])
 
-class Window(tk.Tk):
-    pass
-
-
-def main():
-    def update_data(w:Window)->None:
-        datasource.update_render_data()
-        #-----------更新treeView資料---------------
-        #lastest_data = datasource.lastest_datetime_data()
-        #w.youbikeTreeView.update_content(lastest_data)
-
-        # w.after(10*60*1000, update_data,w)  #每隔10分鐘
-        t = Timer(60*60, update_data,args=(window,))
-
-    window = Window()
-    window.title('空氣品質監測站基本資料')
-    window.geometry('600x300')
-    window.resizable(width=False,height=False)
-    # window.after(1000, update_data, window)
-    t = Timer(1, update_data, args=(window,))
-    t.start()
-    window.mainloop()
-    
-
-if __name__ == "__main__":
-    main()
+i = 0
+for i in range(24):
+    update_render_data()
+    i += 1
+    sleep(3600)
+    Thread(target = update_render_data).start()
 ```
