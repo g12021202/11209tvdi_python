@@ -18,7 +18,7 @@ import psycopg2
 import password as pw
 import datetime
 from threading import Thread
-from time import sleep
+import time
 
 def download_air_data()->list[dict]:
     '''
@@ -27,7 +27,7 @@ def download_air_data()->list[dict]:
     Curl 
     curl -X GET "https://data.moenv.gov.tw/api/v2/aqx_p_07?api_key=cbb6f9c0-9c3b-4086-b464-80594cd61f78" -H "accept: */*"
     '''
-    air_url = 'https://data.moenv.gov.tw/api/v2/aqx_p_07?api_key={pw.apiKey}'
+    air_url = 'https://data.moenv.gov.tw/api/v2/aqx_p_07?api_key=cbb6f9c0-9c3b-4086-b464-80594cd61f78'
     res = requests.get(air_url)
     data = res.json()['records']
     return data
@@ -92,6 +92,6 @@ i = 0
 for i in range(24):
     update_render_data()
     i += 1
-    sleep(3600)
+    time.sleep(3600)
     Thread(target = update_render_data).start()
 ```

@@ -3,7 +3,7 @@ import psycopg2
 import password as pw
 import datetime
 from threading import Thread
-from time import sleep
+import time
 
 def download_air_data()->list[dict]:
     '''
@@ -77,5 +77,5 @@ i = 0
 for i in range(24):
     update_render_data()
     i += 1
-    sleep(3600)
+    time.sleep(3600)
     Thread(target = update_render_data).start()
