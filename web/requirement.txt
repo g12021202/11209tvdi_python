@@ -1,0 +1,6 @@
+requests
+flask
+pandas
+gunicorn
+psycopy2_binary
+dash
