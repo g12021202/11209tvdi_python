@@ -2,5 +2,5 @@ requests
 flask
 pandas
 gunicorn
-psycopy2_binary
+psycopg2-binary
 dash
