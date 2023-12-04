@@ -1,19 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask_Dash</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='/css/bootstrap.min.css')}}">
-</head>
-<body>
-    <h1>Hello, World!</h1>
-    <p class="h1">Flask_Dash</p>
-    <h1>
-        Flask_Dash
-        <small class="text-body-secondary">With faded secondary text</small>
-      </h1>
-    <script src="{{url_for('static',filename='/js/bootstrap.min.js')}}"></script>
-    
-</body>
-</html>
+{% extends "base_navigation.html" %}
+{% block title %}
+    Flask_Dash
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+
+        /* Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) {}
+
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) {}
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {}
+
+        /* X-Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {}
+
+        /* XX-Large devices (larger desktops, 1400px and up) */
+        @media (min-width: 1400px) {}
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container-lg">
+        <h1>Flask_Dash_及時更新</h1>
+        {{ super() }}
+    </div>    
+{% endblock %}
+
+
+
+{% block footer %}
+        &copy; Copyright 2023 by <a href="https://flask-dash-web-gpxs.onrender.com">林冠宏</a>.
+{% endblock %}
