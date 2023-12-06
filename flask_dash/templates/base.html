@@ -10,16 +10,17 @@
     {% endblock %}
 </head>
 <body>
-    {% block navi %} {% endblock %}
-
+    {% block navi %}
+    {% endblock %}
+    
     {% block content %}        
         <div id="footer">
             {% block footer %}
-            &copy; Copyright 2023 by <a href="https://github.com/g12021202?tab=repositories/">you</a>.
+            &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
             {% endblock %}
         </div>
     {% endblock %}
-    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.bundle.min.js') }}"></script>
     
 </body>
 </html>
