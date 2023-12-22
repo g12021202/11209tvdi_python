@@ -1,35 +1,39 @@
 {% extends "base_navigation.html" %}
+
 {% block title %}
     Flask_Dash
 {% endblock %}
+
 {% block head %}
     {{ super() }}
     <style>
+        
+        @media (min-width: 576px) { }
 
-        /* Small devices (landscape phones, 576px and up) */
-        @media (min-width: 576px) {}
-
-        /* Medium devices (tablets, 768px and up) */
+    
         @media (min-width: 768px) {}
 
-        /* Large devices (desktops, 992px and up) */
+
         @media (min-width: 992px) {}
 
-        /* X-Large devices (large desktops, 1200px and up) */
+
         @media (min-width: 1200px) {}
 
-        /* XX-Large devices (larger desktops, 1400px and up) */
+
         @media (min-width: 1400px) {}
-
-
     </style>
 {% endblock %}
 
+
 {% block content %}
     <div class="container-lg">
-        <h1>Flask_Dash_及時更新</h1>
+        <h1>Flask_Dash__及時更新</h1>
+        {% if username %}
+        <h5>{{username}},歡迎光臨</h5>
+        {% endif %}
         {{ super() }}
-    </div>    
+    </div>
+       
 {% endblock %}
 
 

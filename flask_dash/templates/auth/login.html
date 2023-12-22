@@ -36,16 +36,27 @@
                 
                 <tbody>
                   <tr >
-                    <th scope="row" class="col-2 text-end">{{ form.name.label }}</th>
+                    <th scope="row" class="col-2 text-end">{{ form.email.label }}</th>
                     <td>
-                        {{ form.name(size=20,class='form-control') }}
+                        {{ form.email(class='form-control') }}
+                        {% if form.email.errors %}
+                            <ul class="errors">
+                            {% for error in form.email.errors %}
+                                <li>
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                </li>
+                                
+                            {% endfor %}
+                        {% endif %}
                     </td>
                     
                   </tr>
                   <tr>
-                    <th scope="row" class="col-2 text-end">密碼</th>
+                    <th scope="row" class="col-2 text-end">{{ form.uPass.label }}</th>
                     <td>
-                        <input type="text" id="password" name="password" required minlength="4" maxlength="8" size="10"  class="form-control" />
+                      {{ form.uPass(class='form-control') }}
                     </td>
                   
                   </tr>
@@ -65,6 +76,7 @@
     </div>
        
 {% endblock %}
+
 
 
 {% block footer %}
